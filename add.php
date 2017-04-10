@@ -1,3 +1,12 @@
+<?php
+  require_once 'auth.php';
+  require_once 'session.php';
+  require_once 'db.php';
+  require_once 'utils.php';
+
+  check_login($db);
+?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -27,7 +36,7 @@ function load_home() {
 ?>
 
 <div name="content" style="padding-left: 140px;padding-right: 140px;padding-top: 40px">
-  <form action="#">
+  <form action="add<?php echo $acl?>.php">
     <div name="top">
       <div class="row">
         <label class="col-sm-2">Document Name</label>
@@ -70,9 +79,13 @@ function load_home() {
         <?php         	
         	if ($tipe == 1) {
         		include 'employee.html';
+				
+    
         	}
         	else if ($tipe == 2) {
 		        include 'customer.html';
+				
+    
 		    }
 		    else if ($tipe == 3) {
 		        include 'communication.html';
