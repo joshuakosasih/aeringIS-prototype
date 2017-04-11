@@ -1,4 +1,14 @@
-﻿<!DOCTYPE html>
+﻿<?php
+require_once 'auth.php';
+require_once 'session.php';
+require_once 'db.php';
+require_once 'utils.php';
+
+check_login($db);
+
+?>
+
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Production Dashboard</title>    
@@ -33,6 +43,76 @@
     <th style="width: 200px">Date Modified</th>
     <th style="width: 220px">Action</th>
   </tr>
+  
+    <?php
+	$query = <<<SQL
+		select id_project, docname, last_updated from projects
+SQL;
+	
+	$stmt = $db->prepare($query);
+	
+	if ($stmt === FALSE) echo $db->error;
+	$stmt->execute();
+	$stmt->bind_result($id, $name, $last);
+	while ($stmt->fetch()){
+		echo "<tr>";
+		echo "<td>Project</td>";
+		echo "<td>".$id."</td>";
+		echo "<td>".$name."</td>";
+		echo "<td>".$last."</td>";
+		echo "<td><a href=\"edit.php?id=".$id."&type=4&acl=P\">Edit</a><br><a href=\"delete.php?id=".$id."&type=4&acl=P\">Delete</a></td>";
+		echo "</tr>";
+		
+	}
+
+  ?>
+  
+  <?php
+	$query = <<<SQL
+		select id_job, docname, last_updated from jobs
+SQL;
+	
+	$stmt = $db->prepare($query);
+	
+	if ($stmt === FALSE) echo $db->error;
+	$stmt->execute();
+	$stmt->bind_result($id, $name, $last);
+	while ($stmt->fetch()){
+		echo "<tr>";
+		echo "<td>Job</td>";
+		echo "<td>".$id."</td>";
+		echo "<td>".$name."</td>";
+		echo "<td>".$last."</td>";
+		echo "<td><a href=\"edit.php?id=".$id."&type=5&acl=P\">Edit</a><br><a href=\"delete.php?id=".$id."&type=5&acl=P\">Delete</a></td>";
+		echo "</tr>";
+		
+	}
+
+  ?>
+  
+  
+  <?php
+	$query = <<<SQL
+		select id_quotation, docname, last_updated from quotations
+SQL;
+	
+	$stmt = $db->prepare($query);
+	
+	if ($stmt === FALSE) echo $db->error;
+	$stmt->execute();
+	$stmt->bind_result($id, $name, $last);
+	while ($stmt->fetch()){
+		echo "<tr>";
+		echo "<td>Quotation</td>";
+		echo "<td>".$id."</td>";
+		echo "<td>".$name."</td>";
+		echo "<td>".$last."</td>";
+		echo "<td><a href=\"edit.php?id=".$id."&type=7&acl=P\">Edit</a><br><a href=\"delete.php?id=".$id."&type=7&acl=P\">Delete</a></td>";
+		echo "</tr>";
+		
+	}
+
+  ?>
   
 </table>
 </div>

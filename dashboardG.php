@@ -1,4 +1,14 @@
-﻿<!DOCTYPE html>
+﻿<?php
+require_once 'auth.php';
+require_once 'session.php';
+require_once 'db.php';
+require_once 'utils.php';
+
+check_login($db);
+
+?>
+
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>General Affair Dashboard</title>    
@@ -33,6 +43,99 @@
     <th style="width: 200px">Date Modified</th>
     <th style="width: 220px">Action</th>
   </tr>
+  
+  <?php
+	$query = <<<SQL
+		select id_project, docname, last_updated from projects
+SQL;
+	
+	$stmt = $db->prepare($query);
+	
+	if ($stmt === FALSE) echo $db->error;
+	$stmt->execute();
+	$stmt->bind_result($id, $name, $last);
+	while ($stmt->fetch()){
+		echo "<tr>";
+		echo "<td>Project</td>";
+		echo "<td>".$id."</td>";
+		echo "<td>".$name."</td>";
+		echo "<td>".$last."</td>";
+		echo "<td><a href=\"edit.php?id=".$id."&type=4&acl=G\">Edit</a><br><a href=\"delete.php?id=".$id."&type=4&acl=G\">Delete</a></td>";
+		echo "</tr>";
+		
+	}
+
+  ?>
+  
+  <?php
+	$query = <<<SQL
+		select id_cust, docname, last_updated from customers
+SQL;
+	
+	$stmt = $db->prepare($query);
+	
+	if ($stmt === FALSE) echo $db->error;
+	$stmt->execute();
+	$stmt->bind_result($id, $name, $last);
+	while ($stmt->fetch()){
+		echo "<tr>";
+		echo "<td>Customer</td>";
+		echo "<td>".$id."</td>";
+		echo "<td>".$name."</td>";
+		echo "<td>".$last."</td>";
+		echo "<td><a href=\"edit.php?id=".$id."&type=2&acl=G\">Edit</a><br><a href=\"delete.php?id=".$id."&type=2&acl=G\">Delete</a></td>";
+		echo "</tr>";
+		
+	}
+
+  ?>
+  
+  <?php
+	$query = <<<SQL
+		select id_emp, docname, last_updated from employees
+SQL;
+	
+	$stmt = $db->prepare($query);
+	
+	if ($stmt === FALSE) echo $db->error;
+	$stmt->execute();
+	$stmt->bind_result($id, $name, $last);
+	while ($stmt->fetch()){
+		echo "<tr>";
+		echo "<td>Employee</td>";
+		echo "<td>".$id."</td>";
+		echo "<td>".$name."</td>";
+		echo "<td>".$last."</td>";
+		echo "<td><a href=\"edit.php?id=".$id."&type=1&acl=G\">Edit</a><br><a href=\"delete.php?id=".$id."&type=1&acl=G\">Delete</a></td>";
+		echo "</tr>";
+		
+	}
+
+  ?>
+  
+  
+  <?php
+	$query = <<<SQL
+		select id_inv, docname, last_updated from invoices
+SQL;
+	
+	$stmt = $db->prepare($query);
+	
+	if ($stmt === FALSE) echo $db->error;
+	$stmt->execute();
+	$stmt->bind_result($id, $name, $last);
+	while ($stmt->fetch()){
+		echo "<tr>";
+		echo "<td>Invoice</td>";
+		echo "<td>".$id."</td>";
+		echo "<td>".$name."</td>";
+		echo "<td>".$last."</td>";
+		echo "<td><a href=\"edit.php?id=".$id."&type=8&acl=G\">Edit</a><br><a href=\"delete.php?id=".$id."&type=8&acl=G\">Delete</a></td>";
+		echo "</tr>";
+		
+	}
+
+  ?>
   
 </table>
 </div>

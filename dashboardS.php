@@ -59,7 +59,7 @@ SQL;
 		echo "<td>".$id."</td>";
 		echo "<td>".$name."</td>";
 		echo "<td>".$last."</td>";
-		echo "<td><a href=\"edit.php?id=".$id."&type=3&acl=S\">Edit</a><a href=\"delete.php?id=".$id."&type=3&acl=S\">Delete</a></td>";
+		echo "<td><a href=\"edit.php?id=".$id."&type=3&acl=S\">Edit</a><br><a href=\"delete.php?id=".$id."&type=3&acl=S\">Delete</a></td>";
 		echo "</tr>";
 		
 	}
@@ -82,7 +82,7 @@ SQL;
 		echo "<td>".$id."</td>";
 		echo "<td>".$name."</td>";
 		echo "<td>".$last."</td>";
-		echo "<td><a href=\"edit.php?id=".$id."&type=2&acl=S\">Edit</a><a href=\"delete.php?id=".$id."&type=2&acl=S\">Delete</a></td>";
+		echo "<td><a href=\"edit.php?id=".$id."&type=2&acl=S\">Edit</a><br><a href=\"delete.php?id=".$id."&type=2&acl=S\">Delete</a></td>";
 		echo "</tr>";
 		
 	}
