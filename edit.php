@@ -1,3 +1,12 @@
+<?php
+  require_once 'auth.php';
+  require_once 'session.php';
+  require_once 'db.php';
+  require_once 'utils.php';
+
+  check_login($db);
+?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -84,6 +93,9 @@
   		    else if ($tipe == 8) {
   		        include 'invoice.php';
   		    }
+			else if ($tipe == 9) {
+		        include 'tax_invoice.php';
+		    }
   		?>      
 
       </div>
@@ -91,7 +103,7 @@
       <div name="right" class="col-sm-4" style="padding: 5px">
         <button type="submit" style="margin: 10px">Save</button>
         <br />
-        <a href="dashboard<?php echo $acl?>.html"><input type="button" style="margin: 10px" value="Cancel"></a>
+        <a href="dashboard<?php echo $acl?>.php"><input type="button" style="margin: 10px" value="Cancel"></a>
         <br />
       </div>
 

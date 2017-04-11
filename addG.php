@@ -29,7 +29,7 @@ SQL;
 				);
 			if($stmt->execute()) {
 				$userid = $_SESSION['id_emp'];
-				header("Location: dashboardG.html");
+				header("Location: dashboardG.php");
 			} else {
 				echo $stmt->error;
 			}
@@ -49,7 +49,7 @@ SQL;
 					);
 			if($stmt->execute()) {
 				$userid = $_SESSION['id_emp'];
-				header("Location: dashboardG.html");
+				header("Location: dashboardG.php");
 			} else {
 				echo $stmt->error;
 			}
@@ -70,7 +70,7 @@ SQL;
 					);
 			if($stmt->execute()) {
 				$userid = $_SESSION['id_emp'];
-				header("Location: dashboardG.html");
+				header("Location: dashboardG.php");
 			} else {
 				echo $stmt->error;
 			}
@@ -93,7 +93,7 @@ SQL;
 					);
 			if($stmt->execute()) {
 				$userid = $_SESSION['id_emp'];
-				header("Location: dashboardG.html");
+				header("Location: dashboardG.php");
 			} else {
 				echo $stmt->error;
 			}

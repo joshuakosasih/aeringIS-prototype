@@ -110,7 +110,7 @@ function load_home() {
       <div name="right" class="col-sm-4" style="padding: 5px">
         <button type="submit" style="margin: 10px">Save & Add</button>
         <br />
-        <a href="dashboard<?php echo $acl?>.html"><input type="button" style="margin: 10px" value="Cancel & Discard"></a>
+        <a href="dashboard<?php echo $acl?>.php"><input type="button" style="margin: 10px" value="Cancel & Discard"></a>
         <br />
       </div>
 

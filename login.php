@@ -20,13 +20,13 @@ SQL;
 			if ($_POST['password'] == $password) {
 				$_SESSION['id_emp'] = $id_emp;
 				if ($division == 'GA'){
-					header("Location: dashboardG.html");
+					header("Location: dashboardG.php");
 				} elseif ($division == 'S'){
-					header("Location: dashboardS.html");
+					header("Location: dashboardS.php");
 				} elseif ($division == 'P'){
-					header("Location: dashboardP.html");
+					header("Location: dashboardP.php");
 				} elseif ($division == 'Q'){
-					header("Location: dashboardQ.html");
+					header("Location: dashboardQ.php");
 				}
 			}
 		}
