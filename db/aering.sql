@@ -29,6 +29,8 @@ CREATE TABLE `communications` (
   `attn` varchar(45) DEFAULT NULL,
   `via` varchar(20) DEFAULT NULL,
   `id_project` int(11) DEFAULT NULL,
+  `docname` varchar(60) DEFAULT NULL,
+  `last_updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id_comm`),
   KEY `id_project` (`id_project`),
   KEY `id_emp` (`id_emp`),
@@ -57,6 +59,8 @@ CREATE TABLE `customers` (
   `id_cust` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `phone` char(15) DEFAULT NULL,
+  `docname` varchar(60) DEFAULT NULL,
+  `last_updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id_cust`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -83,6 +87,8 @@ CREATE TABLE `employees` (
   `division` varchar(45) DEFAULT NULL,
   `username` varchar(20) DEFAULT NULL,
   `password` varchar(20) DEFAULT NULL,
+  `docname` varchar(60) DEFAULT NULL,
+  `last_updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id_emp`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -93,7 +99,7 @@ CREATE TABLE `employees` (
 
 LOCK TABLES `employees` WRITE;
 /*!40000 ALTER TABLE `employees` DISABLE KEYS */;
-INSERT INTO `employees` VALUES (1,'Tes','GA','tes123','tes123');
+INSERT INTO `employees` VALUES (1,'Tes','GA','tes123','tes123',NULL,NULL);
 /*!40000 ALTER TABLE `employees` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,6 +118,8 @@ CREATE TABLE `invoices` (
   `via` varchar(10) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL,
   `id_project` int(11) DEFAULT NULL,
+  `docname` varchar(60) DEFAULT NULL,
+  `last_updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id_inv`),
   KEY `id_project` (`id_project`),
   CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`id_project`) REFERENCES `projects` (`id_project`)
@@ -138,6 +146,8 @@ CREATE TABLE `jobs` (
   `id_job` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
   `id_project` int(11) DEFAULT NULL,
+  `docname` varchar(60) DEFAULT NULL,
+  `last_updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id_job`),
   KEY `id_project` (`id_project`),
   CONSTRAINT `jobs_ibfk_1` FOREIGN KEY (`id_project`) REFERENCES `projects` (`id_project`)
@@ -164,6 +174,8 @@ CREATE TABLE `payments` (
   `id_payment` int(11) NOT NULL AUTO_INCREMENT,
   `duedate` date DEFAULT NULL,
   `id_project` int(11) DEFAULT NULL,
+  `docname` varchar(60) DEFAULT NULL,
+  `last_updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id_payment`),
   KEY `id_project` (`id_project`),
   CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`id_project`) REFERENCES `projects` (`id_project`)
@@ -192,6 +204,8 @@ CREATE TABLE `projects` (
   `name` varchar(45) DEFAULT NULL,
   `description` text,
   `id_customer` int(11) DEFAULT NULL,
+  `docname` varchar(60) DEFAULT NULL,
+  `last_updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id_project`),
   KEY `id_customer` (`id_customer`),
   CONSTRAINT `projects_ibfk_1` FOREIGN KEY (`id_customer`) REFERENCES `customers` (`id_cust`)
@@ -222,6 +236,8 @@ CREATE TABLE `quotations` (
   `deadline` date DEFAULT NULL,
   `delivery_date` date DEFAULT NULL,
   `id_project` int(11) DEFAULT NULL,
+  `docname` varchar(60) DEFAULT NULL,
+  `last_updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id_quotation`),
   KEY `id_project` (`id_project`),
   CONSTRAINT `quotations_ibfk_1` FOREIGN KEY (`id_project`) REFERENCES `projects` (`id_project`)
@@ -251,6 +267,8 @@ CREATE TABLE `ref_po_wo` (
   `approv_date` date DEFAULT NULL,
   `unit_receive_date` date DEFAULT NULL,
   `id_project` int(11) DEFAULT NULL,
+  `docname` varchar(60) DEFAULT NULL,
+  `last_updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id_ref`),
   KEY `id_project` (`id_project`),
   CONSTRAINT `ref_po_wo_ibfk_1` FOREIGN KEY (`id_project`) REFERENCES `projects` (`id_project`)
@@ -281,6 +299,8 @@ CREATE TABLE `tax_invoices` (
   `via` varchar(10) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL,
   `id_project` int(11) DEFAULT NULL,
+  `docname` varchar(60) DEFAULT NULL,
+  `last_updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id_tax`),
   KEY `id_project` (`id_project`),
   CONSTRAINT `tax_invoices_ibfk_1` FOREIGN KEY (`id_project`) REFERENCES `projects` (`id_project`)
@@ -305,4 +325,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-07  9:55:50
+-- Dump completed on 2017-04-11  8:13:19
