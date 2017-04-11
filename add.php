@@ -78,31 +78,31 @@ function load_home() {
       <div id="left" name="left" class="col-sm-8" style="padding: 5px">              
         <?php         	
         	if ($tipe == 1) {
-        		include 'employee.html';
+        		include 'employee.php';
         	}
         	else if ($tipe == 2) {
-		        include 'customer.html';
+		        include 'customer.php';
 		    }
 		    else if ($tipe == 3) {
-		        include 'communication.html';
+		        include 'communication.php';
 		    }
 		    else if ($tipe == 4) {
-		        include 'project.html';
+		        include 'project.php';
 		    }
 		    else if ($tipe == 5) {
-		        include 'job.html';
+		        include 'job.php';
 		    }
 		    else if ($tipe == 6) {
-		        include 'payment.html';
+		        include 'payment.php';
 		    }
 		    else if ($tipe == 7) {
-		        include 'quotation.html';
+		        include 'quotation.php';
 		    }
 		    else if ($tipe == 8) {
-		        include 'invoice.html';
+		        include 'invoice.php';
 		    }
 			else if ($tipe == 9) {
-		        include 'tax_invoice.html';
+		        include 'tax_invoice.php';
 		    }
 		?>
      </div>

@@ -12,12 +12,13 @@
   if ($type==4){
 	  
 		$query = <<<SQL
-			insert into projects (created_date, name, description, id_customer)
-				values (?,?,?,?);
+			insert into projects (docname, created_date, name, description, id_customer)
+				values (?,?,?,?,?);
 SQL;
 		$stmt = $db->prepare($query);
 			if ($stmt === FALSE) echo $db->error;
-				$stmt->bind_param('issi',
+				$stmt->bind_param('sissi',
+					$_GET['docname'],
 					$_GET['tanggal'],
 					$_GET['nama'],
 					$_GET['deskripsi'],
@@ -32,12 +33,13 @@ SQL;
 	}   elseif ($type==7){
 	  
 		$query = <<<SQL
-			insert into quotations (no_quot, publish, tat, deadline, delivery_date, id_project)
-				values (?,?,?,?,?,?);
+			insert into quotations (docname, no_quot, publish, tat, deadline, delivery_date, id_project)
+				values (?,?,?,?,?,?,?);
 SQL;
 		$stmt = $db->prepare($query);
 			if ($stmt === FALSE) echo $db->error;
-				$stmt->bind_param('siiiii',
+				$stmt->bind_param('ssiiiii',
+					$_GET['docname'],
 					$_GET['noquot'],
 					$_GET['tanggal'],
 					$_GET['tab'],
@@ -54,12 +56,13 @@ SQL;
 	}  elseif ($type==8){
 	  
 		$query = <<<SQL
-			insert into invoices (no_inv, publish_date, delivery_date, via, description, id_project)
-				values (?,?,?,?,?,?);
+			insert into invoices (docname, no_inv, publish_date, delivery_date, via, description, id_project)
+				values (?,?,?,?,?,?,?);
 SQL;
 		$stmt = $db->prepare($query);
 			if ($stmt === FALSE) echo $db->error;
-				$stmt->bind_param('siissi',
+				$stmt->bind_param('ssiissi',
+					$_GET['docname'],
 					$_GET['noinvo'],
 					$_GET['tanggal'],
 					$_GET['delivery'],
@@ -76,12 +79,13 @@ SQL;
 	}  elseif ($type==9){
 	  
 		$query = <<<SQL
-			insert into tax_invoices (no_tax_inv, publish_date, delivery_date, via, description, id_project)
-				values (?,?,?,?,?,?);
+			insert into tax_invoices (docname, no_tax_inv, publish_date, delivery_date, via, description, id_project)
+				values (?,?,?,?,?,?,?);
 SQL;
 		$stmt = $db->prepare($query);
 			if ($stmt === FALSE) echo $db->error;
-				$stmt->bind_param('siissi',
+				$stmt->bind_param('ssiissi',
+					$_GET['docname'],
 					$_GET['noinvo'],
 					$_GET['tanggal'],
 					$_GET['delivery'],
@@ -98,12 +102,13 @@ SQL;
 	}   elseif ($type==6){
 	  
 		$query = <<<SQL
-			insert into payments (duedate, id_project)
-				values (?,?);
+			insert into payments (docname, duedate, id_project)
+				values (?,?,?);
 SQL;
 		$stmt = $db->prepare($query);
 			if ($stmt === FALSE) echo $db->error;
-				$stmt->bind_param('ii',
+				$stmt->bind_param('sii',
+					$_GET['docname'],
 					$_GET['tanggal'],
 					$_GET['idproj']
 					);

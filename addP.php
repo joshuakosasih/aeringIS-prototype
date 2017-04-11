@@ -12,12 +12,13 @@
   if ($type==4){
 	  
 		$query = <<<SQL
-			insert into projects (created_date, name, description, id_customer)
-				values (?,?,?,?);
+			insert into projects (docname, created_date, name, description, id_customer)
+				values (?,?,?,?,?);
 SQL;
 		$stmt = $db->prepare($query);
 			if ($stmt === FALSE) echo $db->error;
-				$stmt->bind_param('issi',
+				$stmt->bind_param('sissi',
+					$_GET['docname'],
 					$_GET['tanggal'],
 					$_GET['nama'],
 					$_GET['deskripsi'],
@@ -32,12 +33,13 @@ SQL;
 	} elseif ($type==5){
 	  
 		$query = <<<SQL
-			insert into jobs (name, id_project)
-				values (?,?);
+			insert into jobs (docname, name, id_project)
+				values (?,?,?);
 SQL;
 		$stmt = $db->prepare($query);
 			if ($stmt === FALSE) echo $db->error;
-				$stmt->bind_param('si',
+				$stmt->bind_param('ssi',
+					$_GET['docname'],
 					$_GET['nama'],
 					$_GET['idproj']
 					);
@@ -50,12 +52,13 @@ SQL;
 	}  elseif ($type==7){
 	  
 		$query = <<<SQL
-			insert into quotations (no_quot, publish, tat, deadline, delivery_date, id_project)
-				values (?,?,?,?,?,?);
+			insert into quotations (docname, no_quot, publish, tat, deadline, delivery_date, id_project)
+				values (?,?,?,?,?,?,?);
 SQL;
 		$stmt = $db->prepare($query);
 			if ($stmt === FALSE) echo $db->error;
-				$stmt->bind_param('siiiii',
+				$stmt->bind_param('ssiiiii',
+					$_GET['docname'],
 					$_GET['noquot'],
 					$_GET['tanggal'],
 					$_GET['tab'],
