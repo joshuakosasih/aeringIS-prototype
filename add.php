@@ -105,6 +105,9 @@ function load_home() {
 		    else if ($tipe == 8) {
 		        include 'invoice.html';
 		    }
+			else if ($tipe == 9) {
+		        include 'tax_invoice.html';
+		    }
 		?>
         	
       </div>
