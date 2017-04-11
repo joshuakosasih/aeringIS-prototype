@@ -37,15 +37,17 @@ SQL;
   } elseif ($type==2){
 	  
 		$query = <<<SQL
-			insert into customers (docname, name, phone)
-				values (?,?,?);
+			insert into customers (docname, name, phone, address, company)
+				values (?,?,?,?,?);
 SQL;
 		$stmt = $db->prepare($query);
 			if ($stmt === FALSE) echo $db->error;
-				$stmt->bind_param('sss',
+				$stmt->bind_param('sssss',
 					$_GET['docname'],
 					$_GET['nama'],
-					$_GET['phone']
+					$_GET['phone'],
+					$_GET['address'],
+					$_GET['company']
 					);
 			if($stmt->execute()) {
 				$userid = $_SESSION['id_emp'];
