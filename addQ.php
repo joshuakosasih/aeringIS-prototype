@@ -98,7 +98,7 @@ SQL;
 	}   elseif ($type==6){
 	  
 		$query = <<<SQL
-			insert into payments (due_date, id_project)
+			insert into payments (duedate, id_project)
 				values (?,?);
 SQL;
 		$stmt = $db->prepare($query);
