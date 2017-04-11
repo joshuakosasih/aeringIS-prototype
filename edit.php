@@ -1,42 +1,25 @@
-<?php
-  require_once 'auth.php';
-  require_once 'session.php';
-  require_once 'db.php';
-  require_once 'utils.php';
-
-  check_login($db);
-?>
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>Add Document</title>    
+    <title>Edit Document</title>    
     <link href="css/bootstrap.min.css" rel="stylesheet">    
 </head>
-
-<script type="text/javascript">
-function load_home() {
-  alert("woy");
-     document.getElementById("left").innerHTML='<object type="text/html" data="customer.html" ></object>';
-}
-</script>
-
 
 <body>
 
 <div name="topbanner" style="background-color: #76D7C4;height: 140px;padding: 5px;padding-left: 100px;padding-right: 100px;border-bottom-width: 3px;border-bottom-style: solid;border-color: black">
   <h2 style="float: left;">Aering</h2>
   <a href="index.html" style="float: right;margin-top: 30px;"><button>Logout</button></a>
-  <h1 style="clear: both;">Add Document</h1>
+  <h1 style="clear: both;">Edit Document</h1>
 </div>
 
 <?php 
 	$acl = $_GET["acl"];
-	$tipe = $_GET["type"]; 	
+	$tipe = $_GET["type"];
 ?>
 
 <div name="content" style="padding-left: 140px;padding-right: 140px;padding-top: 40px">
-  <form action="add<?php echo $acl?>.php">
+  <form action="#">
     <div name="top">
       <div class="row">
         <label class="col-sm-2">Document Name</label>
@@ -45,7 +28,7 @@ function load_home() {
       <br />
       <div class="row">
         <label class="col-sm-2">Document Type</label>
-        <select id="type" name="type">
+        <select id="type" name="type" disabled>
           <?php if ($acl == 'G') echo "<option " ?>
           value="1" <?php if ($tipe == 1) echo "selected";?> >Employee</option>
           <?php if ($acl == 'S'||$acl == 'G') echo "<option " ?>
@@ -78,39 +61,37 @@ function load_home() {
       <div id="left" name="left" class="col-sm-8" style="padding: 5px">              
         <?php         	
         	if ($tipe == 1) {
-        		include 'employee.html';
+        		include 'employee.php';
         	}
         	else if ($tipe == 2) {
-		        include 'customer.html';
-		    }
-		    else if ($tipe == 3) {
-		        include 'communication.html';
-		    }
-		    else if ($tipe == 4) {
-		        include 'project.html';
-		    }
-		    else if ($tipe == 5) {
-		        include 'job.html';
-		    }
-		    else if ($tipe == 6) {
-		        include 'payment.html';
-		    }
-		    else if ($tipe == 7) {
-		        include 'quotation.html';
-		    }
-		    else if ($tipe == 8) {
-		        include 'invoice.html';
-		    }
-			else if ($tipe == 9) {
-		        include 'tax_invoice.html';
-		    }
-		?>
-     </div>
+		        include 'customer.php';
+  		    }
+  		    else if ($tipe == 3) {
+  		        include 'communication.php';
+  		    }
+  		    else if ($tipe == 4) {
+  		        include 'project.php';
+  		    }
+  		    else if ($tipe == 5) {
+  		        include 'job.php';
+  		    }
+  		    else if ($tipe == 6) {
+  		        include 'payment.php';
+  		    }
+  		    else if ($tipe == 7) {
+  		        include 'quotation.php';
+  		    }
+  		    else if ($tipe == 8) {
+  		        include 'invoice.php';
+  		    }
+  		?>      
+
+      </div>
 
       <div name="right" class="col-sm-4" style="padding: 5px">
-        <button type="submit" style="margin: 10px">Save & Add</button>
+        <button type="submit" style="margin: 10px">Save</button>
         <br />
-        <a href="dashboard<?php echo $acl?>.html"><input type="button" style="margin: 10px" value="Cancel & Discard"></a>
+        <a href="dashboard<?php echo $acl?>.html"><input type="button" style="margin: 10px" value="Cancel"></a>
         <br />
       </div>
 
