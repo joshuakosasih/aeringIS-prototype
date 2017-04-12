@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2017 at 06:31 AM
+-- Generation Time: Apr 12, 2017 at 10:51 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.5.38
 
@@ -37,13 +37,6 @@ CREATE TABLE `communications` (
   `last_updated` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `communications`
---
-
-INSERT INTO `communications` (`id_comm`, `date`, `id_emp`, `attn`, `via`, `id_project`, `docname`, `last_updated`) VALUES
-(2, '0000-00-00', 1, 'sdf', 'fsc', 1, 'com', '2017-04-11 11:21:05');
-
 -- --------------------------------------------------------
 
 --
@@ -65,8 +58,9 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id_cust`, `name`, `phone`, `docname`, `last_updated`, `company`, `address`) VALUES
-(1, 'cust', '081', NULL, NULL, NULL, NULL),
-(2, 'cust2', '93', NULL, NULL, 'com', 'jalan');
+(1, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, NULL, NULL, 'cust21', '2017-04-12 14:19:08', NULL, NULL),
+(9, 'bismillah', '2593', 'lalal', '2017-04-12 15:36:44', 'aamiin', 'kkk');
 
 -- --------------------------------------------------------
 
@@ -295,12 +289,12 @@ ALTER TABLE `tax_invoices`
 -- AUTO_INCREMENT for table `communications`
 --
 ALTER TABLE `communications`
-  MODIFY `id_comm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_comm` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id_cust` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_cust` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `employees`
 --
