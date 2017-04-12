@@ -78,7 +78,7 @@ SQL;
 	$stmt->bind_result($id, $name, $last);
 	while ($stmt->fetch()){
 		echo "<tr>";
-		echo "<td>Customer</td>";
+		echo "<td><a href=\"read.php?id=".$id."&type=2&acl=S\">Customer</a></td>";
 		echo "<td>".$id."</td>";
 		echo "<td>".$name."</td>";
 		echo "<td>".$last."</td>";

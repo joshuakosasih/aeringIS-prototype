@@ -6,7 +6,8 @@
   require_once 'utils.php';
 
   check_login($db);
-  
+ 
+if (isset($_GET["id"])) { 
   $type = $_GET['type'];
   
   if ($type==3){
@@ -53,6 +54,31 @@ SQL;
 				echo $stmt->error;
 			}
 	}
+} else{
+	
+	$query = <<<SQL
+			update customers set name=?, phone=?, address=?, company=? where id_cust=?;
+SQL;
+		$stmt = $db->prepare($query);
+		error_reporting(E_ALL);
+	ini_set('display_errors',1);
+	
+			if ($stmt === FALSE) echo $db->error;
+				$stmt->bind_param('ssssi',
+					
+					$_GET['nama'],
+					$_GET['phone'],
+					$_GET['address'],
+					$_GET['company'],
+					$_GET['id']
+					);
+			if($stmt->execute()) {
+				$userid = $_SESSION['id_emp'];
+				header("Location: dashboardS.php");
+			} else {
+				echo $stmt->error;
+			}
+}
   
 				
 ?>
