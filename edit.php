@@ -32,7 +32,7 @@
 ?>
 
 <div name="content" style="padding-left: 140px;padding-right: 140px;padding-top: 40px">
-  <form action="add<?php echo $acl?>.php">
+  <form action="edit<?php echo $acl?>.php">
     <div name="top">
       <div class="row">
         <label class="col-sm-2">Document Name</label>

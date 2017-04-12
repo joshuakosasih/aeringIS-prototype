@@ -59,3 +59,6 @@ SQL;
     <label class="col-sm-3">Address</label>
     <input class="col-sm-6" type="text" name="address" value="<?php echo $address ?>">
   </div>
+  <div class="row" style="margin: 10px">
+    <input class="col-sm-6" type="hidden" name="id" value="<?php echo $id ?>">
+  </div>

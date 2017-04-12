@@ -7,7 +7,7 @@
 
   check_login($db);
  
-if (isset($_GET["id"])) { 
+//if (isset($_GET["id"])) { 
   $type = $_GET['type'];
   
   if ($type==3){
@@ -32,7 +32,7 @@ SQL;
 			} else {
 				echo $stmt->error;
 			}
-	} elseif ($type==2){
+	} else if ($type==2){
 	  
 		$query = <<<SQL
 			insert into customers (docname, name, phone, address, company)
@@ -54,7 +54,7 @@ SQL;
 				echo $stmt->error;
 			}
 	}
-} else{
+/*} else{
 	
 	$query = <<<SQL
 			update customers set name=?, phone=?, address=?, company=? where id_cust=?;
@@ -78,7 +78,7 @@ SQL;
 			} else {
 				echo $stmt->error;
 			}
-}
+}*/
   
 				
 ?>
