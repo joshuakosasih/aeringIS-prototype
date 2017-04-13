@@ -46,6 +46,7 @@ function load_home() {
       <div class="row">
         <label class="col-sm-2">Document Type</label>
         <select id="type" name="type">
+		<option <?php if ($tipe == 0) echo "selected";?>>--</option>
           <?php if ($acl == 'G') echo "<option " ?>
           value="1" <?php if ($tipe == 1) echo "selected";?> >Employee</option>
           <?php if ($acl == 'S'||$acl == 'G') echo "<option " ?>

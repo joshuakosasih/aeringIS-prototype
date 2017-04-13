@@ -56,7 +56,7 @@ SQL;
 	$stmt->bind_result($id, $name, $last);
 	while ($stmt->fetch()){
 		echo "<tr>";
-		echo "<td>Project</td>";
+		echo "<td><a href=\"read.php?id=".$id."&type=4&acl=P\">Project</a></td>";
 		echo "<td>".$id."</td>";
 		echo "<td>".$name."</td>";
 		echo "<td>".$last."</td>";
@@ -79,7 +79,7 @@ SQL;
 	$stmt->bind_result($id, $name, $last);
 	while ($stmt->fetch()){
 		echo "<tr>";
-		echo "<td>Job</td>";
+		echo "<td><a href=\"read.php?id=".$id."&type=5&acl=P\">Job</a></td>";
 		echo "<td>".$id."</td>";
 		echo "<td>".$name."</td>";
 		echo "<td>".$last."</td>";
@@ -103,7 +103,7 @@ SQL;
 	$stmt->bind_result($id, $name, $last);
 	while ($stmt->fetch()){
 		echo "<tr>";
-		echo "<td>Quotation</td>";
+		echo "<td><a href=\"read.php?id=".$id."&type=7&acl=P\">Quotation</a></td>";
 		echo "<td>".$id."</td>";
 		echo "<td>".$name."</td>";
 		echo "<td>".$last."</td>";

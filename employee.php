@@ -21,6 +21,7 @@ check_login($db);
 
     if ($edit) {
 	$id = $_GET["id"];
+	$tipe = $_GET["type"];
     	
 	//load ke form
       $query = <<<SQL
@@ -56,4 +57,10 @@ SQL;
   <div class="row" style="margin: 10px">
     <label class="col-sm-3">Password</label>
     <input class="col-sm-6" type="text" name="password" value="<?php echo $password ?>">
+  </div>
+  <div class="row" style="margin: 10px">
+    <input class="col-sm-6" type="hidden" name="id" value="<?php echo $id ?>">
+  </div>
+  <div class="row" style="margin: 10px">
+    <input class="col-sm-6" type="hidden" name="tipe" value="<?php echo $tipe ?>">
   </div>

@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `communications`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `communications` (
   `id_comm` int(11) NOT NULL AUTO_INCREMENT,
-  `date` date DEFAULT NULL,
+  `date` varchar(20) DEFAULT NULL,
   `id_emp` int(11) DEFAULT NULL,
   `attn` varchar(45) DEFAULT NULL,
   `via` varchar(20) DEFAULT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `communications` (
 
 LOCK TABLES `communications` WRITE;
 /*!40000 ALTER TABLE `communications` DISABLE KEYS */;
-INSERT INTO `communications` VALUES (1,'2017-08-09',3,'art','phone',4,'tes','2017-04-12 18:41:25');
+INSERT INTO `communications` VALUES (1,'2017-01-04',10,'art','phone',4,'tes','2017-04-12 18:41:25');
 /*!40000 ALTER TABLE `communications` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,7 +72,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (9,'bi','2593','lalal','2017-04-12 15:36:44','aamiin','kkk'),(10,'scarletta','0890','testing','2017-04-12 17:50:41','scarlet hotel','jalan omo');
+INSERT INTO `customers` VALUES (10,'scarletta julia y','0890','testing','2017-04-12 17:50:41','scarlet','jalan omo');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -101,7 +101,7 @@ CREATE TABLE `employees` (
 
 LOCK TABLES `employees` WRITE;
 /*!40000 ALTER TABLE `employees` DISABLE KEYS */;
-INSERT INTO `employees` VALUES (1,'Tes','GA','tes123','tes123',NULL,NULL),(2,'saya','S','ss','ss',NULL,NULL),(4,'testes','P','testes','123','hreuhfe','2017-04-12 19:12:18'),(5,'testes','Q','tesq','123','hreuhfe','2017-04-12 19:12:53');
+INSERT INTO `employees` VALUES (1,'HAHAHA','GA','tes123','tes123',NULL,NULL),(2,'saya xxx','S','ss','ss',NULL,NULL),(4,'testestes','P','testes','123','hreuhfe','2017-04-12 19:12:18'),(5,'testes','Q','tesq','123','hreuhfe','2017-04-12 19:12:53');
 /*!40000 ALTER TABLE `employees` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,8 +115,8 @@ DROP TABLE IF EXISTS `invoices`;
 CREATE TABLE `invoices` (
   `id_inv` int(11) NOT NULL AUTO_INCREMENT,
   `no_inv` varchar(45) DEFAULT NULL,
-  `publish_date` date DEFAULT NULL,
-  `delivery_date` date DEFAULT NULL,
+  `publish_date` varchar(20) DEFAULT NULL,
+  `delivery_date` varchar(20) DEFAULT NULL,
   `via` varchar(10) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL,
   `id_project` int(11) DEFAULT NULL,
@@ -124,7 +124,7 @@ CREATE TABLE `invoices` (
   `last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_inv`),
   KEY `id_project` (`id_project`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,6 +133,7 @@ CREATE TABLE `invoices` (
 
 LOCK TABLES `invoices` WRITE;
 /*!40000 ALTER TABLE `invoices` DISABLE KEYS */;
+INSERT INTO `invoices` VALUES (1,'30/2/in','2017-04-17','2017-04-19','email','invoice',5,'invoice56','2017-04-13 13:29:17');
 /*!40000 ALTER TABLE `invoices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,7 +152,7 @@ CREATE TABLE `jobs` (
   `last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_job`),
   KEY `id_project` (`id_project`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -160,6 +161,7 @@ CREATE TABLE `jobs` (
 
 LOCK TABLES `jobs` WRITE;
 /*!40000 ALTER TABLE `jobs` DISABLE KEYS */;
+INSERT INTO `jobs` VALUES (1,'office boy',9,'kontrak kerja','2017-04-13 14:35:18');
 /*!40000 ALTER TABLE `jobs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,13 +174,13 @@ DROP TABLE IF EXISTS `payments`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `payments` (
   `id_payment` int(11) NOT NULL AUTO_INCREMENT,
-  `duedate` date DEFAULT NULL,
+  `duedate` varchar(20) DEFAULT NULL,
   `id_project` int(11) DEFAULT NULL,
   `docname` varchar(60) DEFAULT NULL,
   `last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_payment`),
   KEY `id_project` (`id_project`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -187,6 +189,7 @@ CREATE TABLE `payments` (
 
 LOCK TABLES `payments` WRITE;
 /*!40000 ALTER TABLE `payments` DISABLE KEYS */;
+INSERT INTO `payments` VALUES (1,'2013-05-20',1,'tax invoice','2017-04-13 17:18:03');
 /*!40000 ALTER TABLE `payments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,7 +202,7 @@ DROP TABLE IF EXISTS `projects`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `projects` (
   `id_project` int(11) NOT NULL AUTO_INCREMENT,
-  `created_date` date DEFAULT NULL,
+  `created_date` varchar(20) DEFAULT NULL,
   `name` varchar(45) DEFAULT NULL,
   `description` text,
   `id_customer` int(11) DEFAULT NULL,
@@ -207,7 +210,7 @@ CREATE TABLE `projects` (
   `last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_project`),
   KEY `id_customer` (`id_customer`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,6 +219,7 @@ CREATE TABLE `projects` (
 
 LOCK TABLES `projects` WRITE;
 /*!40000 ALTER TABLE `projects` DISABLE KEYS */;
+INSERT INTO `projects` VALUES (2,'2016-12-12','Project Aering','buat website aering',5,'dokumen_proyek_1','2017-04-13 13:41:00');
 /*!40000 ALTER TABLE `projects` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -229,16 +233,16 @@ DROP TABLE IF EXISTS `quotations`;
 CREATE TABLE `quotations` (
   `id_quotation` int(11) NOT NULL AUTO_INCREMENT,
   `no_quot` varchar(45) DEFAULT NULL,
-  `publish` date DEFAULT NULL,
+  `publish` varchar(20) DEFAULT NULL,
   `tat` int(11) DEFAULT NULL,
-  `deadline` date DEFAULT NULL,
-  `delivery_date` date DEFAULT NULL,
+  `deadline` varchar(20) DEFAULT NULL,
+  `delivery_date` varchar(20) DEFAULT NULL,
   `id_project` int(11) DEFAULT NULL,
   `docname` varchar(60) DEFAULT NULL,
   `last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_quotation`),
   KEY `id_project` (`id_project`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -247,6 +251,7 @@ CREATE TABLE `quotations` (
 
 LOCK TABLES `quotations` WRITE;
 /*!40000 ALTER TABLE `quotations` DISABLE KEYS */;
+INSERT INTO `quotations` VALUES (1,'quot2/1/5','2015-08-17',6,'2015-10-12','2015-10-15',6,'document 5','2017-04-13 15:17:00');
 /*!40000 ALTER TABLE `quotations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -290,8 +295,8 @@ DROP TABLE IF EXISTS `tax_invoices`;
 CREATE TABLE `tax_invoices` (
   `id_tax` int(11) NOT NULL AUTO_INCREMENT,
   `no_tax_inv` varchar(45) DEFAULT NULL,
-  `publish_date` date DEFAULT NULL,
-  `delivery_date` date DEFAULT NULL,
+  `publish_date` varchar(20) DEFAULT NULL,
+  `delivery_date` varchar(20) DEFAULT NULL,
   `via` varchar(10) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL,
   `id_project` int(11) DEFAULT NULL,
@@ -299,7 +304,7 @@ CREATE TABLE `tax_invoices` (
   `last_updated` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_tax`),
   KEY `id_project` (`id_project`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -308,6 +313,7 @@ CREATE TABLE `tax_invoices` (
 
 LOCK TABLES `tax_invoices` WRITE;
 /*!40000 ALTER TABLE `tax_invoices` DISABLE KEYS */;
+INSERT INTO `tax_invoices` VALUES (1,'30/2/inv7','2017-04-17','2017-04-19','email','invoice',5,'taxinvoice56','2017-04-13 17:18:36');
 /*!40000 ALTER TABLE `tax_invoices` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -320,4 +326,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-12 20:05:26
+-- Dump completed on 2017-04-13 17:22:48

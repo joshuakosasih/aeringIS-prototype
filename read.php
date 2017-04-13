@@ -55,7 +55,7 @@ SQL;
 	}
 	else if ($tipe==8) {
 		$query = <<<SQL
-		select no_inv, publish_date, delivery_date, via, description, id_project, docname, last_updated from projects where id_project=$id
+		select no_inv, publish_date, delivery_date, via, description, id_project, docname, last_updated from invoices where id_inv=$id
 SQL;
 
 		$stmt = $db->prepare($query);
@@ -64,7 +64,50 @@ SQL;
 		$stmt->bind_result($no_inv, $publish_date, $delivery_date, $via, $description, $id_project, $docname, $last_updated);
 		$stmt->fetch();
 	}
-	
+	else if ($tipe==5) {
+		$query = <<<SQL
+		select name, id_project, docname, last_updated from jobs where id_job=$id
+SQL;
+
+		$stmt = $db->prepare($query);
+		if ($stmt === FALSE) echo $db->error;
+		$stmt->execute();
+		$stmt->bind_result($name, $id_project, $docname, $last_updated);
+		$stmt->fetch();
+	}
+	else if ($tipe==7) {
+		$query = <<<SQL
+		select no_quot, publish, tat, deadline, delivery_date, id_project, docname, last_updated from quotations where id_quotation=$id
+SQL;
+
+		$stmt = $db->prepare($query);
+		if ($stmt === FALSE) echo $db->error;
+		$stmt->execute();
+		$stmt->bind_result($no_quot, $publish, $tat, $deadline, $delivery_date, $id_project, $docname, $last_updated);
+		$stmt->fetch();
+	}
+	else if ($tipe==6) {
+		$query = <<<SQL
+		select duedate, id_project, docname, last_updated from payments where id_payment=$id
+SQL;
+
+		$stmt = $db->prepare($query);
+		if ($stmt === FALSE) echo $db->error;
+		$stmt->execute();
+		$stmt->bind_result($duedate, $id_project, $docname, $last_updated);
+		$stmt->fetch();
+	}
+	else if ($tipe==9) {
+		$query = <<<SQL
+		select no_tax_inv, publish_date, delivery_date, via, description, id_project, docname, last_updated from tax_invoices where id_tax=$id
+SQL;
+
+		$stmt = $db->prepare($query);
+		if ($stmt === FALSE) echo $db->error;
+		$stmt->execute();
+		$stmt->bind_result($no_tax_inv, $publish_date, $delivery_date, $via, $description, $id_project, $docname, $last_updated);
+		$stmt->fetch();
+	}
 
 
 ?>
@@ -222,7 +265,97 @@ SQL;
 			
 		  echo "</table>";
 	}
-	  
+	  else if ($tipe==5) {
+		echo "<table>";
+		
+			echo "<tr>";
+				echo "<td>Nama</td>";
+				echo "<td>:".$name."</td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td>ID Project</td>";
+				echo "<td>:".$id_project."</td>";
+			echo "</tr>";
+			
+			
+		  echo "</table>";
+	}
+	else if ($tipe==7) {
+		echo "<table>";
+		
+			echo "<tr>";
+				echo "<td>No quotation</td>";
+				echo "<td>:".$no_quot."</td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td>Tanggal dibuat</td>";
+				echo "<td>:".$publish."</td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td>Tab</td>";
+				echo "<td>:".$tat."</td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td>Deadline</td>";
+				echo "<td>:".$deadline."</td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td>Tanggal pengiriman</td>";
+				echo "<td>:".$delivery_date."</td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td>ID Project</td>";
+				echo "<td>:".$id_project."</td>";
+			echo "</tr>";
+			
+			
+		  echo "</table>";
+	}
+	else if ($tipe==6) {
+		echo "<table>";
+		
+			echo "<tr>";
+				echo "<td>Deadline Pembayaran</td>";
+				echo "<td>:".$duedate."</td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td>ID Project</td>";
+				echo "<td>:".$id_project."</td>";
+			echo "</tr>";
+			
+			
+		  echo "</table>";
+	}
+	else if ($tipe==9) {
+		echo "<table>";
+		
+			echo "<tr>";
+				echo "<td>No tax invoice</td>";
+				echo "<td>:".$no_tax_inv."</td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td>Tanggal terbit</td>";
+				echo "<td>:".$publish_date."</td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td>Tanggal pengiriman</td>";
+				echo "<td>:".$delivery_date."</td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td>Via</td>";
+				echo "<td>:".$via."</td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td>Deskripsi</td>";
+				echo "<td>:".$description."</td>";
+			echo "</tr>";
+			echo "<tr>";
+				echo "<td>ID Project</td>";
+				echo "<td>:".$id_project."</td>";
+			echo "</tr>";
+			
+		  echo "</table>";
+	}
       
 		
     ?>

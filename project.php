@@ -22,6 +22,7 @@ check_login($db);
 
     if ($edit) {
 	$id = $_GET["id"];
+	$tipe = $_GET["type"];
     	
 	//load ke form
       $query = <<<SQL
@@ -45,7 +46,7 @@ SQL;
 
   <div class="row" style="margin: 10px">
     <label class="col-sm-3">Tanggal mulai</label>
-    <input class="col-sm-6" type="date" name="tanggal" value="<?php echo $created_date ?>">
+    <input class="col-sm-6" type="text" name="tanggal" value="<?php echo $created_date ?>">
   </div>
   <div class="row" style="margin: 10px">
     <label class="col-sm-3">Nama</label>
@@ -53,9 +54,15 @@ SQL;
   </div>
   <div class="row" style="margin: 10px">
     <label class="col-sm-3">Deskripsi</label>
-    <textarea class="col-sm-6" type="text" name="deskripsi" rows="5" value="<?php echo $description ?>"></textarea>
+    <textarea class="col-sm-6" type="text" name="deskripsi" rows="5"><?php echo $description ?></textarea>
   </div>
   <div class="row" style="margin: 10px">
     <label class="col-sm-3">ID Customer</label>
     <input class="col-sm-6" type="text" name="idcust" value="<?php echo $id_customer ?>">
+  </div>
+  <div class="row" style="margin: 10px">
+    <input class="col-sm-6" type="hidden" name="id" value="<?php echo $id ?>">
+  </div>
+  <div class="row" style="margin: 10px">
+    <input class="col-sm-6" type="hidden" name="tipe" value="<?php echo $tipe ?>">
   </div>

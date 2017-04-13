@@ -23,6 +23,7 @@ check_login($db);
 
     if ($edit) {
 	$id = $_GET["id"];
+	$tipe = $_GET["type"];
     	
 	//load ke form
       $query = <<<SQL
@@ -49,11 +50,11 @@ SQL;
   </div>
   <div class="row" style="margin: 10px">
     <label class="col-sm-3">Tanggal terbit</label>
-    <input class="col-sm-6" type="date" name="tanggal" value="<?php echo $publish_date ?>">
+    <input class="col-sm-6" type="text" name="tanggal" value="<?php echo $publish_date ?>">
   </div>
   <div class="row" style="margin: 10px">
     <label class="col-sm-3">Tanggal pengiriman</label>
-    <input class="col-sm-6" type="date" name="delivery" value="<?php echo $delivery_date ?>">
+    <input class="col-sm-6" type="text" name="delivery" value="<?php echo $delivery_date ?>">
   </div>
   <div class="row" style="margin: 10px">
     <label class="col-sm-3">Via</label>
@@ -66,4 +67,10 @@ SQL;
   <div class="row" style="margin: 10px">
     <label class="col-sm-3">ID Project</label>
     <input class="col-sm-6" type="text" name="idproj" value="<?php echo $id_project ?>">
+  </div>
+  <div class="row" style="margin: 10px">
+    <input class="col-sm-6" type="hidden" name="id" value="<?php echo $id ?>">
+  </div>
+  <div class="row" style="margin: 10px">
+    <input class="col-sm-6" type="hidden" name="tipe" value="<?php echo $tipe ?>">
   </div>
